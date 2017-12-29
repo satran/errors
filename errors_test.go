@@ -20,3 +20,18 @@ func TestError(t *testing.T) {
 		t.Errorf("unexpedted line: %#v", causedBy)
 	}
 }
+
+func TestDepths(t *testing.T) {
+	err := depth1().(*Error)
+	if exp, got := 36, err.line; exp != got {
+		t.Errorf("expected: %d got: %d", exp, got)
+	}
+}
+
+func depth1() error {
+	return depth2()
+}
+
+func depth2() error {
+	return New("test depth")
+}

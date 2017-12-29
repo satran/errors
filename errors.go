@@ -13,11 +13,11 @@ type Error struct {
 }
 
 func WithCaused(err error, message string) *Error {
-	return new(message, 4).CausedBy(err)
+	return new(message, 3).CausedBy(err)
 }
 
 func New(message string) *Error {
-	return new(message, 4)
+	return new(message, 3)
 }
 
 func new(message string, count int) *Error {
